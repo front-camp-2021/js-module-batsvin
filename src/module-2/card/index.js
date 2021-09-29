@@ -1,28 +1,27 @@
 export default class Card {
-  element;
+   element;
+   constructor({
+      id = '',
+      images = [],
+      title = '',
+      rating = 0,
+      price = 0,
+      category = '',
+      brand = ''
+   } = {}) {
+      this.id = id;
+      this.images = images;
+      this.title = title;
+      this.rating = rating;
+      this.price = price;
+      this.category = category;
+      this.brand = brand;
 
-  constructor({
-    id = '',
-    images = [],
-    title = '',
-    rating = 0,
-    price = 0,
-    category = '',
-    brand = ''
-  } = {}) {
-    this.id = id;
-    this.images = images;
-    this.title = title;
-    this.rating = rating;
-    this.price = price;
-    this.category = category;
-    this.brand = brand;
+      this.render();
+   }
 
-    this.render();
-  }
-
-  get template() {
-    return `<div class="card-background">
+   get template() {
+      return `<div><div class="card-background">
     <section class="card">
        <div class="card__img">
           <div class="card__img-padding"><img src=${this.image} alt="apple-watch"></div>
@@ -62,21 +61,21 @@ export default class Card {
              ADD TO</button>
        </footer>
     </section>
- </div>`
-  }
-
-  render() {
-    const wrapper = document.createElement('div');
-    wrapper.innerHTML = this.template;
-    this.element = wrapper.firstElementChild
-  }
-  remove() {
-    if (this.element) {
-      this.element.remove();
-    }
-  }
-  destroy() {
-    this.remove();
-    this.element = null;
-  }
+ </div>
+ <div>`
+   }
+   render() {
+      const wrapper = document.createElement('div');
+      wrapper.innerHTML = this.template;
+      this.element = wrapper.firstElementChild
+   }
+   remove() {
+      if (this.element) {
+         this.element.remove();
+      }
+   }
+   destroy() {
+      this.remove();
+      this.element = null;
+   }
 }
