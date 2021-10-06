@@ -21,10 +21,11 @@ export default class Card {
    }
 
    get template() {
-      return `<div><div class="card-background">
-    <section class="card">
-       <div class="card__img">
-          <div class="card__img-padding"><img src=${this.image} alt="apple-watch"></div>
+      return `<div>
+      <div class="card-background">
+      <section class="card">
+       <div class="card__img">   
+          <div class="card__img-padding"><img src=${this.images[0]} alt="apple-watch"></div>
        </div>
        <header class="card__header">
           <button class="card__rating">${this.rating} <svg width="15" height="14" viewBox="0 0 15 14" fill="none"
@@ -62,10 +63,13 @@ export default class Card {
        </footer>
     </section>
  </div>
- <div>`
+ </div>
+ 
+ `
    }
    render() {
       const wrapper = document.createElement('div');
+
       wrapper.innerHTML = this.template;
       this.element = wrapper.firstElementChild
    }

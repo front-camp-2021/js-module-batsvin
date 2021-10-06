@@ -1,4 +1,4 @@
-import Card from '../../module-2/card/index.js';
+
 
 export default class CardsList {
   element;
@@ -8,20 +8,15 @@ export default class CardsList {
     this.data = data;
     this.cards = []
     this.data.forEach(i => {
-      const card = new Card(i)
+      const card = new Component(i)
       this.cards.push(card.element.innerHTML)
-      console.log(card)
     });
+    this.renderList()
+  }
+  renderList() {
     const wrapper = document.createElement('div');
     wrapper.innerHTML = this.cards.join('');
     this.element = wrapper
-  }
-  renderList() {
-    let result = ''
-    this.cards.forEach(element => {
-      result += element.element
-    });
-    this.element = result;
   }
   update({ data = [], Component = {} }) {
     this.Component = Component;
@@ -33,9 +28,12 @@ export default class CardsList {
       this.cards.push(card.element.innerHTML)
       console.log(card)
     });
-    const wrapper = document.createElement('div');
-    wrapper.innerHTML = this.cards.join('');
-    this.element = wrapper
+    this.renderList()
+  }
+  remove() {
+    if (this.element) {
+      this.element.remove();
+    }
   }
   destroy() {
     this.remove();
