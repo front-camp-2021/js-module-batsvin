@@ -13,8 +13,10 @@ export default class CardsList {
     });
     this.renderList()
   }
+
   renderList() {
-    const wrapper = document.createElement('div');
+    const wrapper = document.createElement('section');
+    wrapper.className += "main-cards__container"
     wrapper.innerHTML = this.cards.join('');
     this.element = wrapper
   }
